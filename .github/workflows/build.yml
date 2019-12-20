@@ -1,0 +1,16 @@
+name: Docker Build
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: build
+        run: |
+          docker login docker.pkg.github.com -u mokhan -p ${{ secrets.GITHUB_TOKEN }}
+          docker pull docker.pkg.github.com/mokhan/mst/mokha-st:latest || true
+          docker build --cache-from docker.pkg.github.com/mokhan/mst/mokha-st:latest -t docker.pkg.github.com/mokhan/mst/mokha-st:latest .
+          docker push docker.pkg.github.com/mokhan/mst/mokha-st:latest
