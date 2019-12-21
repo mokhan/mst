@@ -10,4 +10,4 @@ COPY patch.sh patch.sh
 RUN sh patch.sh
 RUN make clean install
 WORKDIR /root/
-RUN fpm -s dir -t rpm -n mokha-st -v '0.8.2' /usr/local/bin/st /usr/local/share/man/man1/st.1
+RUN fpm -s dir -t rpm -n mokha-st -v '0.8.2' /usr/local/bin/st /usr/local/share/man/man1/st.1 /usr/share/applications/st
