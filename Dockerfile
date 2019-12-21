@@ -7,7 +7,8 @@ RUN gem install --no-document fpm
 RUN git clone https://git.suckless.org/st /root/st
 WORKDIR /root/st
 COPY patch.sh patch.sh
+COPY config.h config.h
 RUN sh patch.sh
 RUN make clean install
 WORKDIR /root/
-RUN fpm -s dir -t rpm -n mokha-st -v '0.8.2' /usr/local/bin/st /usr/local/share/man/man1/st.1 /usr/share/applications/st
+RUN fpm -s dir -t rpm -n mokha-st -v '0.8.2' /usr/local/bin/st /usr/local/share/man/man1/st.1 /usr/share/applications/st.desktop
