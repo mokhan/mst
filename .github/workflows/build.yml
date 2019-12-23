@@ -11,6 +11,5 @@ jobs:
       - name: build
         run: |
           docker login docker.pkg.github.com -u mokhan -p ${{ secrets.GITHUB_TOKEN }}
-          docker pull docker.pkg.github.com/mokhan/mst:latest || true
-          docker build --cache-from docker.pkg.github.com/mokhan/mst:latest -t docker.pkg.github.com/mokhan/mst:latest .
-          docker push docker.pkg.github.com/mokhan/mst:latest
+          docker build -t docker.pkg.github.com/mokhan/mst/mokha-st:latest .
+          docker push docker.pkg.github.com/mokhan/mst/mokha-st:latest
